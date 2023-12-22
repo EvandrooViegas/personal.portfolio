@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=MuseoModerno:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  background-color: #0D0D0D;
+  color: white;
+  font-family: 'MuseoModerno', sans-serif;
+  cursor: none;
+
+
+}
+
+.max-app-width {
+  max-width: 2000px;
+}
+
+
+.z-nav {
+    z-index: 100;
+}
+.z-cursor {
+    z-index: 200;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+.font-museo {
+    font-family: 'MuseoModerno', sans-serif;
+}
