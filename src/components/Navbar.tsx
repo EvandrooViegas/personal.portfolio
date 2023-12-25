@@ -8,12 +8,9 @@ export default function Navbar() {
     const currScrollPos = window.scrollY;
     if (currScrollPos <= 10) {
       setShouldShowNavbar(true);
-    } else {
-      if (currScrollPos < prevScrollPos.current) {
-        setShouldShowNavbar(true);
-      } else {
-        setShouldShowNavbar(false);
-      }
+    }  else {
+      setShouldShowNavbar(false);
+
     }
 
     prevScrollPos.current = window.scrollY;
