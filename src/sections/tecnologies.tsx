@@ -2,7 +2,6 @@ import { useState } from "react";
 import Section from "../components/Section";
 import { Project, Tecnology, data } from '../data'
 import ProjectCard from "../components/ProjectCard";
-import { IoMenu, IoClose } from "react-icons/io5"
 
 const levelMap = new Map<number, string>([
     [1, "Beginner"],
@@ -12,13 +11,16 @@ const levelMap = new Map<number, string>([
 export default function Tecnologies() {
     const [selectedTecn, setSelectedTecn] = useState(data.skills[0].tecnologies[0])
     const [isOpen, setIsOpen] = useState(false)
-
-    const selectTecn = (tecnology: Tecnology) => {
+    const selectTecn = (tecn: Tecnology) => {
+        setSelectedTecn(tecn)
         setIsOpen(false)
-        setSelectedTecn(tecnology)
     }
     return (
         <Section
+            menu={<Menu selectedTecn={selectedTecn} setSelectedTecn={selectTecn} />}
+            isOpen={isOpen}
+            close={() => setIsOpen(false)}
+            open={() => setIsOpen(true)}
             title="Tecnologies"
             subtitle="The list of all tecnologies that I've used"
             id="skills"
@@ -26,33 +28,15 @@ export default function Tecnologies() {
             className="flex gap-12 "
         >
 
-        {isOpen && (
-              <>
-              <div className="md:hidden inline absolute right-0 inset-y-0 bg-neutral-900 z-10 p-10">
-                <Menu sm selectedTecn={selectedTecn} setSelectedTecn={selectTecn} />
-                </div>
-  
-              <div className="absolute right-6 top-6 z-10 text-3xl" >
-                <button onClick={() => setIsOpen(false)}>
-
-                <IoClose />
-                </button>
-              </div>
-              </>
-        )}
-            <div className="hidden md:inline">
             <Menu selectedTecn={selectedTecn} setSelectedTecn={setSelectedTecn} />
-            </div>
-            <div id="scrollbar" className="flex flex-col gap-12 w-full ">
+            <div className="flex flex-col gap-12 w-full">
                 <div className="flex flex-col items-center md:flex-row justify-between gap-5">
                     <div className="flex items-center px-5 py-3 w-full justify-between    md:text-5xl text-3xl font-black">
                         <div className="flex items-center gap-3">
                             <span style={{ color: selectedTecn.color }}>{selectedTecn.icon}</span>
                             <span>{selectedTecn.name}</span>
                         </div>
-                        <button className="md:hidden inline" onClick={() => setIsOpen(true)}>
-                            <IoMenu />
-                        </button>
+
                     </div>
                     <div className="flex items-center gap-4 ">
                         <div className="flex gap-2">
@@ -65,7 +49,7 @@ export default function Tecnologies() {
                 </div>
                 <div className="space-y-2 w-full">
                     <span className="font-bold text-3xl font-mono">Used in: </span>
-                    <div className="grid md:grid-cols-3 overflow-y-auto max-h-[300px] gap-4" id="scrollbar">
+                    <div className="grid md:grid-cols-3 overflow-y-auto pr-4 max-h-[300px] gap-4" id="scrollbar">
                         {
                             getProjects(selectedTecn.category, selectedTecn.id)
                                 .map(pr =>
@@ -81,14 +65,12 @@ export default function Tecnologies() {
 function Menu({
     selectedTecn,
     setSelectedTecn,
-    sm = false
 }: {
     selectedTecn: Tecnology,
     setSelectedTecn: (t: Tecnology) => void,
-    sm?: boolean
 }) {
     return (
-        <div className={`flex flex-col gap-12 overflow-y-auto md:pr-4 ${sm ? '' : 'max-h-[400px]'} min-w-[400px]`} id="scrollbar">
+        <div className={`flex flex-col gap-12  pr-4 max-h-[400px] overflow-y-auto  min-w-[400px]`} id="scrollbar">
             {data.skills.map(skill => (
                 <div key={skill.category} className="flex flex-col gap-7">
                     <span className="font-semibold">{skill.category}</span>

@@ -3,13 +3,14 @@ import Item from './Item'
 import Projects from '../../sections/projects'
 import Skills from '../../sections/tecnologies'
 import Me from '../../sections/me'
-import CurrentSection from '../CurrentSection'
+import Contact from '../../sections/contact'
 
 
 const list = [
   { name: "Me", comp: <Me /> },
   { name: "Skills", comp: <Skills /> },
   { name: "Projects", comp: <Projects /> },
+  { name: "Projects", comp: <Contact /> },
 ]
 export default function List() {
   const [targetItem, setTargetItem] = useState(1)
@@ -27,10 +28,8 @@ export default function List() {
       window.removeEventListener("scroll", onScroll)
     }
   }, [])
-  const currSection = list[targetItem - 2]?.name
   return (
     <>
-      <CurrentSection section={currSection} />
       {list.map((item, index) => (
         <Item key={index} i={index} scrollY={scrollY} targetItem={targetItem} >
           {item.comp}
