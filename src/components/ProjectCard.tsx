@@ -7,7 +7,7 @@ type Props = {
     project: Project
     small?: boolean
     selected?: boolean
-    border: boolean
+    border?: boolean
 } & HTMLAttributes<HTMLDivElement>
 export default function ProjectCard(props: Props) {
     const { project, selected, className, border, ...rest } = props
@@ -15,6 +15,7 @@ export default function ProjectCard(props: Props) {
         <div 
         key={project.name} 
         className={`
+        w-full aspect-video
         transition-all flex flex-col gap-1.5 
         ${border || selected ? 'border-dashed px-3 py-4 rounded hover:brightness-150' : ''}
         ${border && !selected ? 'border border-neutral-600' : ''} 
@@ -23,7 +24,7 @@ export default function ProjectCard(props: Props) {
         `}
         {...rest}
         > 
-            <div className='relative w-full aspect-video rounded bg-gradient-to-r from-neutral-600 to-neutral-700'>
+            <div className='relative  rounded bg-gradient-to-r from-neutral-600 to-neutral-700'>
 
                 {project.image && (
                     <img src={`/projects/${project.image}`} className="w-full aspect-video object-center object-cover rounded" />

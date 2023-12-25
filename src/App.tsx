@@ -1,8 +1,7 @@
 import List from "./components/List";
 import Navbar from "./components/Navbar";
-import 'swiper/css';
 
-
+import "swiper/css"
 export default function App() {
   return (
     <>

@@ -39,9 +39,9 @@ body::-webkit-scrollbar {
 }
 
 
-#scrollbar {
+/* #scrollbar {
   padding-right: 40px;
-}
+} */
 #scrollbar::-webkit-scrollbar {
     width: 10px;
     
