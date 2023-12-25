@@ -23,7 +23,7 @@ export default function Navbar() {
   }, []);
   return (
     <nav
-      className={`backdrop-blur-md transition-all z-nav fixed top-0 inset-x-0 py-4 px-20 ${
+      className={`border-b border-dashed border-white/20 transition-all z-nav fixed top-0 inset-x-0 py-4 px-20 ${
         shouldShowNavbar
           ? "translate-y-0 opacity-100"
           : "-translate-y-10 opacity-0"
@@ -32,11 +32,8 @@ export default function Navbar() {
       <div className="flex justify-between items-center w-full mx-auto max-app-width">
         <img src={logo} className="w-12" />
         <ul className="flex gap-3 items-center">
-          <li className="hover:underline">
-            <a href="#projects">Projects</a>
-          </li>
           <li>
-            <button className="bg-primary hover:brightness-90 px-6 py-2 rounded-full font-bold uppercase">
+            <button className="bg-primary hover:brightness-90 md:px-6 px-3 py-2 rounded-full font-bold uppercase">
               Talk with me!
             </button>
           </li>

@@ -5,7 +5,6 @@ import "swiper/css"
 export default function App() {
   return (
     <>
-      {/* <Cursor /> */}
       <div className="relative flex flex-col">
         <div>
           <Navbar />
